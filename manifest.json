@@ -1,0 +1,13 @@
+{
+    "name": "9GAG links",
+    "version": "1.0",
+    "description": "Adding direct links to content on 9gag site",
+    "content_scripts": [
+        {
+            "matches": ["*://*.9gag.com/*"],
+            "js": ["Core.js"]
+        }
+    ],
+    "permissions": ["tabs", "*://*.9gag.com/*"],
+    "manifest_version": 2
+}
