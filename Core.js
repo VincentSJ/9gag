@@ -1,12 +1,12 @@
 //------------------------------------------------//
 // Functions
 function DOM(el) { // Convert each mutation to array of elements
-    var oPosts = el.getElementsByTagName('article');
-    var aPosts = Array.from(oPosts);
+    oPosts = el.getElementsByTagName('article');
+    aPosts = Array.from(oPosts);
     return aPosts;
   }
 
-function getVideoLinks(post) { // Get link for VIDEO and GIFs
+function getVideoLinks(post) { // Get link for VIDEOs and GIFs
   var sources = post.getElementsByTagName('source');
   var links = [];
   for ( var i = 0; i < sources.length; i++ ) {
@@ -15,8 +15,7 @@ function getVideoLinks(post) { // Get link for VIDEO and GIFs
   return links[1]; // We need only mp4's link
 }
 
-
-function getImageLink(post) { // Get link for IMG
+function getImageLink(post) { // Get link for IMGs
   var link = post.getElementsByTagName('img')[0].getAttribute('src');
   return link;
 }
@@ -29,7 +28,7 @@ function addLink(post, src) { // Adding input with direct link
   post.getElementsByTagName('header')[0].appendChild(btn);
 }
 
-function checkType(post) { // Checking type of post: img/video/dif
+function checkType(post) { // Checking type of post: img/video/gif
   if (post.getElementsByTagName('video').length != 0) {   
     addLink(post, getVideoLinks(post));
   } else if (post.getElementsByTagName('picture').lenght != 0) {
@@ -44,9 +43,9 @@ var aPosts = Array.from(oPosts);
 // First init on start
 aPosts.filter(checkType);
 
+
 //------------------------------------------------//
 // Per mutation init
-
 var observer = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
 		DOM(mutations[0].addedNodes[0]).filter(checkType)
