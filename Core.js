@@ -41,7 +41,7 @@ function checkType(post) { // Checking type of post: img/video/dif
 var oPosts = document.getElementsByTagName('article');
 var aPosts = Array.from(oPosts);
 
-// First init on strat
+// First init on start
 aPosts.filter(checkType);
 
 //------------------------------------------------//
